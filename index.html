@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seapot Korean BBQ & Hot Pot — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;--card:#151515;--border:#262626;
+  --gold:#c9a84c;--gold-l:#e8c96a;--gold-bg:#141003;
+  --silver:#9fb0c2;--silver-l:#d4dee8;--silver-bg:#0e1318;
+  --lunch:#d9a441;
+  --red:#ff5a4d;--white:#f0ede8;--muted:#808080;--amber:#fbd38d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{zoom:.5;background:var(--black);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;max-width:780px;margin:0 auto;padding-bottom:30px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.97);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex-shrink:0;padding:12px 13px;color:var(--muted);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap}
+nav a.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* HERO */
+.hero{padding:14px 16px 10px;text-align:center;border-bottom:1px solid var(--border)}
+.hero h1{font-family:'Cinzel',serif;font-size:38px;font-weight:900;letter-spacing:.06em;color:var(--gold);line-height:1}
+.hero-sub{color:var(--muted);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.hero-info{display:flex;justify-content:center;gap:20px;margin-top:7px;font-size:12px;color:var(--gold)}
+.banner{padding:6px 12px;text-align:center;font-size:11px;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.banner.lunch{background:#1a1300;color:#ffcf5a}
+.banner.dinner{background:var(--silver-bg);color:var(--silver-l)}
+.banner.closed{background:#111;color:#888}
+.banner small{color:var(--muted);font-size:11px}
+
+/* SECTIONS */
+section{padding:0 12px;scroll-margin-top:42px}
+.divider{display:flex;align-items:center;gap:10px;padding:14px 0 8px;color:var(--gold);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+.sub{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin:8px 0 5px}
+.box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin-bottom:7px}
+.box-t{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-bottom:4px;margin-bottom:4px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.box-t b{color:var(--white);font-size:12px;letter-spacing:0;text-transform:none}
+.box-t i{font-style:normal;color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none;font-size:10px}
+.box-t i.bg{color:var(--gold-l);font-size:8px;font-weight:800}
+
+/* TIER BORDERS */
+.s-tier{border-color:var(--silver)!important;background:var(--silver-bg)!important;box-shadow:0 0 10px rgba(159,176,194,.18)}
+.g-tier{border-color:var(--gold)!important;background:var(--gold-bg)!important;box-shadow:0 0 12px rgba(201,168,76,.25)}
+.s-tier>.box-t{color:var(--silver-l);border-color:#2a3644}
+.g-tier>.box-t{color:var(--gold-l);border-color:#3a3010}
+
+/* PRICING */
+.prices{display:grid;gap:7px;grid-template-columns:repeat(3,1fr)}
+.prices.two{grid-template-columns:1fr 1fr}
+.pc{position:relative;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 9px 9px;text-align:center}
+.pc.lunch-c{border-color:#4a3a1a;opacity:.85}
+.pc.silver-c{border:1.5px solid var(--silver);background:var(--silver-bg);box-shadow:0 0 14px rgba(159,176,194,.2)}
+.pc.gold-c{border:2px solid var(--gold);background:linear-gradient(180deg,#1f1805,#0f0c02);box-shadow:0 0 22px rgba(201,168,76,.35)}
+.ribbon{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:9px;font-weight:800;letter-spacing:.12em;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.tl{font-family:'Cinzel',serif;font-size:15px;font-weight:900;letter-spacing:.1em}
+.lunch-c .tl{color:var(--lunch)}.silver-c .tl{color:var(--silver-l)}.gold-c .tl{color:var(--gold-l)}
+.th{font-size:9px;color:var(--muted);margin:2px 0 5px;line-height:1.3}
+.tp{font-size:24px;font-weight:700;line-height:1}
+.tp sup{font-size:11px}
+.tn{font-size:10px;color:var(--muted);margin-top:2px}
+.tb{font-size:11px;color:var(--amber);margin-top:2px}
+.perk{font-size:10px;margin-top:6px;padding-top:5px;border-top:1px solid var(--border);line-height:1.35;text-align:left}
+.silver-c .perk{color:var(--silver-l);border-color:#2a3644}
+.gold-c .perk{color:var(--gold-l);border-color:#3a3010}
+.lunch-c .perk{color:var(--muted)}
+.kids{font-size:10px;color:var(--muted);margin-top:5px;line-height:1.5;text-align:left}
+.kh{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);margin-bottom:1px}
+.kids b{color:var(--white);font-weight:600}
+.legend{display:flex;gap:14px;justify-content:center;margin:8px 0 2px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:4px}
+
+/* BADGES */
+.bs,.bg{display:inline-block;font-size:8px;font-weight:800;border-radius:3px;padding:0 4px;line-height:14px;flex-shrink:0;letter-spacing:.04em}
+.bs{color:var(--silver-l);border:1px solid var(--silver);background:rgba(159,176,194,.12)}
+.bg{color:var(--gold-l);border:1px solid var(--gold);background:rgba(201,168,76,.15)}
+.hot{color:var(--red);font-size:10px}
+
+/* LISTS */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 10px}
+.li{display:flex;align-items:center;gap:5px;font-size:12px;padding:2px 0;border-bottom:1px solid #1c1c1c}
+.li .n{color:var(--muted);font-size:10px;min-width:15px;text-align:right}
+.li .p{margin-left:auto;color:var(--gold);font-weight:600;font-size:11px;white-space:nowrap}
+.li small{color:var(--muted);font-size:10px}
+.li.s-row{color:var(--silver-l)}
+.li.g-row{color:var(--gold-l)}
+
+/* MEAT */
+.meats{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.meat{position:relative;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:6px 9px;font-size:12px;font-weight:600;line-height:1.25}
+.meat small{display:block;font-size:10px;color:var(--muted);font-weight:400}
+.meat .bs,.meat .bg{position:absolute;top:5px;right:6px}
+
+/* BBQ */
+.bbq{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.bbq .box{margin:0}
+.full{grid-column:1/-1}
+
+/* ADD-ON */
+.addon{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.ao{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:6px 9px;display:flex;justify-content:space-between;align-items:center;gap:4px;font-size:12px;font-weight:600}
+.ao small{display:block;font-size:10px;color:var(--muted);font-weight:400}
+.ao .pr{text-align:right;color:var(--gold);font-weight:700;white-space:nowrap}
+.ao .pr .orig{display:block;color:var(--muted);font-size:9px;font-weight:400}
+
+/* BAR */
+.age{text-align:center;font-size:11px;color:var(--amber);margin-bottom:7px}
+.ck{display:flex;gap:6px;font-size:12px;padding:3px 0;border-bottom:1px solid #1c1c1c}
+.ck div{flex:1;font-weight:600}
+.ck small{display:block;font-weight:400;color:var(--muted);font-size:10px}
+.ck .p{color:var(--gold);font-weight:600;font-size:11px}
+.liq{font-size:11px;padding:2px 0;border-bottom:1px solid #1c1c1c;display:flex;justify-content:space-between;gap:4px}
+.liq .p{color:var(--gold);font-weight:600}
+.txt{font-size:11px;color:#bbb;line-height:1.45}
+
+/* RULES */
+.rule{font-size:12px;padding:4px 0;border-bottom:1px solid #1c1c1c;line-height:1.4}
+.rule strong{color:var(--amber)}
+.warn{color:var(--red);font-weight:700}
+.foot{text-align:center;margin-top:14px;color:var(--muted);font-size:11px}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#pricing" class="active">Pricing</a>
+  <a href="#hotpot">Hot Pot</a>
+  <a href="#kbbq">K-BBQ</a>
+  <a href="#addon">Add-On</a>
+  <a href="#drinks">Drinks</a>
+  <a href="#bar">21+ Bar</a>
+  <a href="#rules">Rules</a>
+</nav>
+
+<div class="banner" id="banner">&nbsp;</div>
+
+<div class="hero">
+  <h1>SEAPOT</h1>
+  <div class="hero-sub">Korean BBQ &amp; Hot Pot · All You Can Eat</div>
+  <div class="hero-info"><span>📞 408-685-2268</span><span>📶 WiFi: 4086852268</span></div>
+</div>
+
+<!-- ═════════ PRICING ═════════ -->
+<section id="pricing">
+  <div class="divider">Pricing</div>
+
+  <div class="prices" id="prices">
+    <!-- LUNCH card: removed by script outside M–F 11am–4pm -->
+    <div class="pc lunch-c" id="lunch-card">
+      <div class="tl">Lunch</div>
+      <div class="th">Mon–Fri · 11am–4pm<br>Holidays excluded</div>
+      <div class="tp"><sup>$</sup>25<sup>.99</sup></div>
+      <div class="tn">Adult · Hot Pot <b>or</b> BBQ</div>
+      <div class="tb">Add both: +$5</div>
+      <div class="perk">Standard menu only</div>
+      <div class="kids"><div class="kh">Kids</div>Under 3ft <b>FREE</b><br>Under 4.5ft <b>$12.99</b><br>Kids add both: <b>+$2.50</b></div>
+    </div>
+
+    <div class="pc silver-c">
+      <div class="tl">Silver</div>
+      <div class="th" id="silver-hours">Dinner · Weekends all day</div>
+      <div class="tp"><sup>$</sup>35<sup>.99</sup></div>
+      <div class="tn">Adult · Hot Pot <b>or</b> BBQ</div>
+      <div class="tb">Add both: +$5</div>
+      <div class="perk">+ Angus Prime &amp; Wagyu hot pot, steaks, tongue, galbi, oysters &amp; more</div>
+      <div class="kids"><div class="kh">Kids</div>Under 3ft <b>FREE</b><br>Under 4.5ft <b>$18.99</b><br>Kids add both: <b>+$2.50</b></div>
+    </div>
+
+    <div class="pc gold-c">
+      <div class="tl">Gold</div>
+      <div class="th">Everything, unlimited</div>
+      <div class="tp"><sup>$</sup>45<sup>.99</sup></div>
+      <div class="tn">Adult · Hot Pot <b>or</b> BBQ</div>
+      <div class="tb">Add both: +$5</div>
+      <div class="perk">All of Silver + unlimited premium Wagyu, Prime Short Rib &amp; Jumbo Tiger Prawn</div>
+      <div class="kids"><div class="kh">Kids</div>Under 3ft <b>FREE</b><br>Under 4.5ft <b>$23.99</b><br>Kids add both: <b>+$2.50</b></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="bs">S</i> Silver &amp; Gold</span>
+    <span><i class="bg">G</i> Gold only</span>
+    <span><i class="hot">🌶</i> Spicy</span>
+  </div>
+</section>
+
+<!-- ═════════ HOT POT ═════════ -->
+<section id="hotpot">
+  <div class="divider">Hot Pot</div>
+
+  <div class="box">
+    <div class="box-t">Step 1 · Soup Base</div>
+    <div class="cols2">
+      <div>
+        <div class="li"><span class="n">1</span>Spicy House <span class="hot">🌶</span></div>
+        <div class="li"><span class="n">2</span>Thai Pot <span class="hot">🌶</span></div>
+        <div class="li"><span class="n">3</span>Healthy Herb</div>
+        <div class="li"><span class="n">4</span>Mushroom</div>
+        <div class="li"><span class="n">5</span>Miso</div>
+        <div class="li"><span class="n">6</span>Spicy Miso <span class="hot">🌶</span></div>
+        <div class="li"><span class="n">7</span>Tomato</div>
+        <div class="li"><span class="n">8</span>Creamy Milk</div>
+      </div>
+      <div>
+        <div class="li"><span class="n">9</span>Curry <span class="hot">🌶</span></div>
+        <div class="li"><span class="n">10</span>Kimchi <span class="hot">🌶</span></div>
+        <div class="li"><span class="n">11</span>Sukiyaki</div>
+        <div class="li"><span class="n">12</span>Tonkotsu</div>
+        <div class="li"><span class="n">13</span>Pepper Pork Stomach</div>
+        <div class="li"><span class="n">14</span>Vegan Miso</div>
+        <div class="li"><span class="n">15</span>Vegan Mushroom</div>
+        <div class="li"><span class="n">16</span>Ginseng Chicken <span class="p">+$5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">Step 2 · Hot Pot Meat</div>
+  <div class="meats">
+    <div class="meat">1. Chicken Breast<small>Lean &amp; tender</small></div>
+    <div class="meat">2. Natural Pork Belly<small>Juicy, fatty, full of flavor</small></div>
+    <div class="meat">3. 100% Berkshire Pork<small>Kurobuta, leaner but tender</small></div>
+    <div class="meat">4. Beef Brisket<small>Lean beef, firm bite</small></div>
+    <div class="meat">5. New Zealand Lamb<small>Juicy, tender, slightly gamey</small></div>
+    <div class="meat">6. Beef Toro<small>Fatty &amp; buttery</small></div>
+    <div class="meat">7. Rib Eye<small>Classic steak cut, beefy</small></div>
+    <div class="meat s-tier">8. Natural Angus Prime<small>Prime grade, extra tender</small><i class="bs">S</i></div>
+    <div class="meat s-tier">9. Australian Wagyu<small>Rich &amp; juicy</small><i class="bs">S</i></div>
+    <div class="meat g-tier">Australian Wagyu Toro<small>Melt-in-your-mouth fat</small><i class="bg">G</i></div>
+    <div class="meat g-tier">Australian Wagyu Brisket<small>Rich, soft &amp; beefy</small><i class="bg">G</i></div>
+    <div class="meat g-tier">American Wagyu Chuck Ribeye<small>Hearty, steak-like bite</small><i class="bg">G</i></div>
+    <div class="meat g-tier">Australian Wagyu Shoulder Cut<small>Leaner wagyu, deep flavor</small><i class="bg">G</i></div>
+  </div>
+</section>
+
+<!-- ═════════ K-BBQ ═════════ -->
+<section id="kbbq">
+  <div class="divider">Korean BBQ</div>
+
+  <div class="box g-tier">
+    <div class="box-t">Gold Premium · Unlimited <i class="bg">G</i></div>
+    <div class="cols2">
+      <div>
+        <div class="li g-row">American Wagyu Dice</div>
+        <div class="li g-row">USDA Angus Prime Short Rib</div>
+        <div class="li g-row">Jumbo Tiger Prawn</div>
+      </div>
+      <div>
+        <div class="li g-row">Australian Wagyu Toro</div>
+        <div class="li g-row">Australian Wagyu Brisket</div>
+        <div class="li g-row">American Wagyu Chuck Ribeye</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bbq">
+    <div class="box full">
+      <div class="box-t">Beef</div>
+      <div class="cols2">
+        <div>
+          <div class="li">Beef Bulgogi</div>
+          <div class="li">Spicy Beef Bulgogi <span class="hot">🌶</span></div>
+          <div class="li">Black Pepper Beef</div>
+          <div class="li">Finger Rib</div>
+          <div class="li">Beef Toro</div>
+          <div class="li">Brisket</div>
+          <div class="li">Garlic Pepper Tender Flap</div>
+        </div>
+        <div>
+          <div class="li s-row"><i class="bs">S</i>Sukiyaki Wagyu Steak</div>
+          <div class="li s-row"><i class="bs">S</i>Ribeye Steak</div>
+          <div class="li s-row"><i class="bs">S</i>Beef Tongue</div>
+          <div class="li s-row"><i class="bs">S</i>Beef Intestine</div>
+          <div class="li s-row"><i class="bs">S</i>Angus Prime Steak</div>
+          <div class="li s-row"><i class="bs">S</i>Galbi Short Rib</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-t">Pork</div>
+      <div class="li">Pork Belly</div>
+      <div class="li">Garlic Pork Belly</div>
+      <div class="li">Spicy Pork Belly <span class="hot">🌶</span></div>
+      <div class="li">Pork Jowl</div>
+      <div class="li">Pork Bulgogi</div>
+      <div class="li">Spicy Pork Bulgogi <span class="hot">🌶</span></div>
+    </div>
+
+    <div class="box">
+      <div class="box-t">Seafood</div>
+      <div class="li">Spicy Fish Fillet <span class="hot">🌶</span></div>
+      <div class="li">Teriyaki Octopus</div>
+      <div class="li">Garlic Shrimp</div>
+      <div class="li">Spicy Shrimp <span class="hot">🌶</span></div>
+      <div class="li s-row"><i class="bs">S</i>Spicy Calamari <span class="hot">🌶</span></div>
+      <div class="li s-row"><i class="bs">S</i>Fresh Oyster</div>
+    </div>
+
+    <div class="box">
+      <div class="box-t">Chicken</div>
+      <div class="li">Garlic Chicken</div>
+      <div class="li">Spicy Chicken <span class="hot">🌶</span></div>
+      <div class="li">Chicken Bulgogi</div>
+      <div class="li">Chicken Gizzards <span class="hot">🌶</span></div>
+    </div>
+
+    <div class="box">
+      <div class="box-t">Others</div>
+      <div class="li s-row"><i class="bs">S</i>Korean Rice Cake</div>
+      <div class="li">Vegetable Medley</div>
+      <div class="li">Cheese Corn</div>
+      <div class="li">Butter · Raw Egg · Steam Rice</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ADD-ON ═════════ -->
+<section id="addon">
+  <div class="divider">Add-On</div>
+  <div class="addon">
+    <div class="ao"><div>Jumbo Tiger Prawn<small>5 pcs</small></div><div class="pr">$10<span class="orig">Original price <s>$15</s></span></div></div>
+    <div class="ao"><div>Abalone<small>each</small></div><div class="pr">$13.99<span class="orig">Original price <s>$16.99</s></span></div></div>
+    <div class="ao"><div>Lobster Tail<small>each</small></div><div class="pr">$15<span class="orig">Original price <s>$16.99</s></span></div></div>
+    <div class="ao"><div>Jumbo Scallop<small>2 pcs</small></div><div class="pr">$8<span class="orig">Original price <s>$12</s></span></div></div>
+    <div class="ao g-tier"><div>A5 Wagyu Ribeye<small>5 oz</small></div><div class="pr">$48<span class="orig">Original price <s>$98</s></span></div></div>
+    <div class="ao"><div>Lamb Chop<small>2 pcs</small></div><div class="pr">$10<span class="orig">Original price <s>$12</s></span></div></div>
+    <div class="ao"><div>Duck Breast<small>6 pcs</small></div><div class="pr">$8<span class="orig">Original price <s>$12</s></span></div></div>
+    <div class="ao"><div>VIP Room<small>2 hr AYCE + Karaoke</small></div><div class="pr" style="font-size:11px">Ask server</div></div>
+  </div>
+</section>
+
+<!-- ═════════ DRINKS ═════════ -->
+<section id="drinks">
+  <div class="divider">Drinks</div>
+
+  <div class="box">
+    <div class="box-t">Tea Drinks</div>
+    <div class="cols2">
+      <div>
+        <div class="li">Hot Green Tea <span class="p">$1.50</span></div>
+        <div class="li">Hot Rice Tea <span class="p">$1.99</span></div>
+        <div class="li">Chinese Herbal Tea <span class="p">$3.50</span></div>
+        <div class="li">Chrysanthemum Tea <span class="p">$3.50</span></div>
+        <div class="li">Honey Jasmine Tea <span class="p">$3.50</span></div>
+        <div class="li">Jasmine Less Sweet <span class="p">$3.50</span></div>
+      </div>
+      <div>
+        <div class="li">Lemon Ice Tea <span class="p">$3.50</span></div>
+        <div class="li">Honey Pomelo <span class="p">$3.50</span></div>
+        <div class="li">Honey Green Tea <span class="p">$3.50</span></div>
+        <div class="li">Raspberry Ice Tea <span class="p">$2.75</span></div>
+        <div class="li">Shirley Temple <span class="p">$3.99</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Mocktails <i>non-alcoholic</i> <b>$8</b></div>
+    <div class="cols2">
+      <div>
+        <div class="ck"><div>Raspberry Lemon Drop<small>Fresh lemon, raspberry, coconut, pineapple</small></div></div>
+        <div class="ck"><div>Strawberry Breeze<small>Strawberry, piña colada, sweet &amp; sour</small></div></div>
+        <div class="ck"><div>Ube Colada<small>Pineapple, coconut, ube</small></div></div>
+      </div>
+      <div>
+        <div class="ck"><div>Sweet Heart<small>Peach, sweet &amp; sour, lime</small></div></div>
+        <div class="ck"><div>Mai Tai<small>Pineapple, orange, lemon</small></div></div>
+        <div class="ck"><div>Sunrise<small>Orange juice, grenadine</small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Fresh Lemonade <i>made fresh daily</i> <b>$5.99</b></div>
+    <div class="txt">Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry</div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Fruit Juice</div>
+    <div class="cols2">
+      <div>
+        <div class="li">Fresh Coconut <span class="p">$6.99</span></div>
+        <div class="li">Orange Juice <span class="p">$3.50</span></div>
+        <div class="li">Apple Juice <span class="p">$3.50</span></div>
+        <div class="li">Cranberry Juice <span class="p">$3.50</span></div>
+      </div>
+      <div>
+        <div class="li">Sour Plum Juice <span class="p">$3.50</span></div>
+        <div class="li">Pineapple Juice <span class="p">$3.50</span></div>
+        <div class="li">Sweet Pear <span class="p">$3.50</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Fountain <i>refill $1.00</i> <b>$2.75</b></div>
+    <div class="txt">Coke · Diet Coke · Sprite · Lemonade · Orange Soda · Ginger Ale · Pibb Xtra · Raspberry Ice Tea · Soda Water</div>
+  </div>
+</section>
+
+<!-- ═════════ 21+ BAR ═════════ -->
+<section id="bar">
+  <div class="divider">21+ Bar</div>
+  <div class="age">🔞 21+ only · Please show your ID to the server</div>
+
+  <div class="box">
+    <div class="box-t">Cocktails</div>
+    <div class="cols2">
+      <div>
+        <div class="ck"><div>Mai Tai<small>White &amp; dark rum, OJ, pineapple, grenadine</small></div><span class="p">$13</span></div>
+        <div class="ck"><div>Tequila Sunrise<small>Tequila, OJ, grenadine</small></div><span class="p">$14</span></div>
+        <div class="ck"><div>Cuba Libre<small>Rum, cola, lime</small></div><span class="p">$13</span></div>
+        <div class="ck"><div>Old Fashioned<small>Bourbon, simple syrup, bitters</small></div><span class="p">$14</span></div>
+      </div>
+      <div>
+        <div class="ck"><div>Gin &amp; Tonic<small>Gin, soda water, lemon</small></div><span class="p">$14</span></div>
+        <div class="ck"><div>Long Island<small>Tequila, vodka, rum, triple sec, gin, lemon, cola</small></div><span class="p">$14</span></div>
+        <div class="ck"><div>Moscow Mule<small>Vodka, ginger beer, lime</small></div><span class="p">$14</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Soju <b>$13 / 12oz</b></div>
+    <div class="txt">Original · Zero Sugar · Peach · Yogurt · Apple · Strawberry · Apple Mango · Green Grape</div>
+    <div class="box-t" style="margin-top:6px">Soju Cocktail <i>mix 1–2 flavors</i> <b>$16 / 30oz · $52 Tower</b></div>
+    <div class="txt">Peach · Kiwi · Passion Fruit · Lychee · Mango · Watermelon · Yogurt · Strawberry · Guava</div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Sake</div>
+    <div class="cols2">
+      <div>
+        <div class="liq"><span>Karatamba <small style="color:var(--muted)">crisp, dry</small></span><span class="p">$18 · $40</span></div>
+        <div class="liq"><span>Kurosawa <small style="color:var(--muted)">med-dry</small></span><span class="p">$20 · $45</span></div>
+        <div class="liq"><span>Dassai 45 <small style="color:var(--muted)">daiginjo</small></span><span class="p">$25 · $55</span></div>
+        <div class="liq"><span>Wakatake Ginjo</span><span class="p">$65</span></div>
+        <div class="liq"><span>Kurosawa "Ginrei"</span><span class="p">$65</span></div>
+        <div class="liq"><span>Dassai Blue 35</span><span class="p">$65</span></div>
+      </div>
+      <div>
+        <div class="liq"><span>Kirakucho <small style="color:var(--muted)">special ed.</small></span><span class="p">$19</span></div>
+        <div class="liq"><span>Hakutsuru</span><span class="p">$22 · $45</span></div>
+        <div class="liq"><span>Hana Awaka <small style="color:var(--muted)">sparkling</small></span><span class="p">$16</span></div>
+        <div class="liq"><span>Sayuri Nigori <small style="color:var(--muted)">sweet</small></span><span class="p">$18</span></div>
+        <div class="liq"><span>Kurosawa Nigori</span><span class="p">$18</span></div>
+      </div>
+    </div>
+    <div class="txt" style="margin-top:4px;color:var(--muted);font-size:10px">Prices: 300ml · 720ml. Single price = 720ml for Wakatake/Ginrei/Dassai Blue, 300ml for the rest.</div>
+  </div>
+
+  <div class="bbq">
+    <div class="box">
+      <div class="box-t">Draft Beer</div>
+      <div class="liq"><span>Glass / Pitcher / Tower</span><span class="p">$7 · $25 · $39.99</span></div>
+      <div class="txt" style="font-size:10px;margin-top:3px">Sapporo, Asahi, 805, Modelo, Corona, Pacifico, Lagunitas IPA, Stella Artois</div>
+      <div class="liq" style="margin-top:3px"><span>Angry Orchard / Sculpin IPA</span><span class="p">$8 · $27 · $42.99</span></div>
+    </div>
+    <div class="box">
+      <div class="box-t">Bottled Beer</div>
+      <div class="liq"><span>Small / Large</span><span class="p">$5.99 · $8.99</span></div>
+      <div class="txt" style="font-size:10px;margin-top:3px">Sapporo, Asahi, Kloud, Heineken, Coors Light, Tsingtao, Corona, Kirin, Guinness, Bud Light, Mango Cart, Blue Moon, Modelo</div>
+      <div class="liq" style="margin-top:3px"><span>Sake / Yuzu Bomb</span><span class="p">$6.99</span></div>
+      <div class="liq"><span>Lady Vodka 30oz</span><span class="p">$19</span></div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:7px">
+    <div class="box-t">Wine</div>
+    <div class="cols2">
+      <div>
+        <div class="liq"><span>Champagne (glass)</span><span class="p">$8</span></div>
+        <div class="liq"><span>Mimosa (glass)</span><span class="p">$11</span></div>
+        <div class="liq"><span>White <small style="color:var(--muted)">Chard, SB, Moscato, Zin</small></span><span class="p">G$8 · B$28</span></div>
+        <div class="liq"><span>Red <small style="color:var(--muted)">Merlot, Cab, Blend</small></span><span class="p">G$8 · B$28</span></div>
+      </div>
+      <div>
+        <div class="liq"><span>Franciscan</span><span class="p">$35</span></div>
+        <div class="liq"><span>J. Lohr</span><span class="p">$49</span></div>
+        <div class="liq"><span>Groth Sauv Blanc</span><span class="p">$65</span></div>
+        <div class="liq"><span>Stag's Leap Karia</span><span class="p">$65</span></div>
+        <div class="liq"><span>Louis M Martini Cab</span><span class="p">$68</span></div>
+        <div class="liq"><span>Silver Oak Cab</span><span class="p">$129</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-t">Hard Liquor</div>
+    <div class="cols3">
+      <div>
+        <div class="liq"><span>Tito's</span><span class="p">$10</span></div>
+        <div class="liq"><span>Skyy</span><span class="p">$10</span></div>
+        <div class="liq"><span>Grey Goose</span><span class="p">$13</span></div>
+        <div class="liq"><span>Bacardi</span><span class="p">$10</span></div>
+        <div class="liq"><span>Jack Daniel's</span><span class="p">$10</span></div>
+        <div class="liq"><span>Maker's Mark</span><span class="p">$10</span></div>
+        <div class="liq"><span>Jim Beam</span><span class="p">$12</span></div>
+        <div class="liq"><span>Kilbrin</span><span class="p">$12</span></div>
+        <div class="liq"><span>Bourbon</span><span class="p">$12</span></div>
+        <div class="liq"><span>Jameson</span><span class="p">$14</span></div>
+        <div class="liq"><span>Hennessy</span><span class="p">$14</span></div>
+        <div class="liq"><span>Hennessy Priv.</span><span class="p">$17</span></div>
+      </div>
+      <div>
+        <div class="liq"><span>Martell VS</span><span class="p">$16</span></div>
+        <div class="liq"><span>Rémy 1738</span><span class="p">$16</span></div>
+        <div class="liq"><span>Glenlivet 12</span><span class="p">$15</span></div>
+        <div class="liq"><span>Black Label</span><span class="p">$15</span></div>
+        <div class="liq"><span>Blue Label</span><span class="p">$28</span></div>
+        <div class="liq"><span>Toki</span><span class="p">$15</span></div>
+        <div class="liq"><span>Tenjaku</span><span class="p">$17</span></div>
+        <div class="liq"><span>Suntory World</span><span class="p">$17</span></div>
+        <div class="liq"><span>Hibiki</span><span class="p">$19</span></div>
+        <div class="liq"><span>Nikka Yoichi</span><span class="p">$19</span></div>
+        <div class="liq"><span>Yoichi Single</span><span class="p">$19</span></div>
+        <div class="liq"><span>Miyagikyo 12</span><span class="p">$25</span></div>
+      </div>
+      <div>
+        <div class="liq"><span>Yamazaki 12</span><span class="p">$28</span></div>
+        <div class="liq"><span>Patrón Silver</span><span class="p">$15</span></div>
+        <div class="liq"><span>Casamigos Rep.</span><span class="p">$17</span></div>
+        <div class="liq"><span>Casamigos Blanco</span><span class="p">$15</span></div>
+        <div class="liq"><span>Don Julio Blanco</span><span class="p">$15</span></div>
+        <div class="liq"><span>Don Julio Rep.</span><span class="p">$17</span></div>
+        <div class="liq"><span>Don Julio 1942</span><span class="p">$25</span></div>
+        <div class="liq"><span>Clase Azul Plata</span><span class="p">$25</span></div>
+        <div class="liq"><span>Clase Azul Rep.</span><span class="p">$25</span></div>
+        <div class="liq"><span>Clase Azul Gold</span><span class="p">$30</span></div>
+        <div class="liq"><span>CA Pink Ed.</span><span class="p">$35</span></div>
+        <div class="liq"><span>CA Black Ed.</span><span class="p">$35</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ RULES ═════════ -->
+<section id="rules">
+  <div class="divider">Rules</div>
+  <div class="box">
+    <div class="rule"><strong>90-min AYCE limit.</strong> +30 min available for 20% during peak hours.</div>
+    <div class="rule"><strong>Leftovers</strong> incur a 20% charge on the entire bill. No to-go.</div>
+    <div class="rule"><strong>Same plan</strong> for everyone at the table.</div>
+    <div class="rule"><strong>Conveyor belt:</strong> take only what you'll finish. <span class="warn">Do not put items back.</span> Ask your server for anything not on the belt.</div>
+    <div class="rule"><strong>Allergies?</strong> Tell your server — we'll help you choose.</div>
+    <div class="rule">No outside food or drink · Last call 30 min before close · 18% service fee for parties of 6+</div>
+  </div>
+  <div class="foot">Thank you for dining at Seapot!</div>
+</section>
+
+<script>
+/* ── TIME-BASED MENU ──
+   Always uses restaurant time (Pacific), not the phone's timezone.
+   Lunch:  Mon–Fri 11:00am–4:00pm  → Lunch + Silver + Gold
+   Dinner: Mon–Fri 4:00pm–11:30pm, Sat–Sun all day → Silver + Gold only
+   Test with ?mode=lunch or ?mode=dinner
+*/
+const LUNCH_START = 11*60, LUNCH_END = 16*60, OPEN = 11*60, CLOSE = 23*60+30;
+
+function pacificNow(){
+  const p = new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'numeric',minute:'2-digit',hour12:false}).formatToParts(new Date());
+  const g = t => p.find(x=>x.type===t).value;
+  const days = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  return {day:days[g('weekday')], mins:(+g('hour')%24)*60 + +g('minute')};
+}
+
+function getMode(){
+  const q = new URLSearchParams(location.search).get('mode');
+  if (q==='lunch'||q==='dinner') return q;
+  const {day,mins} = pacificNow();
+  if (mins < OPEN || mins >= CLOSE) return 'closed';
+  const weekday = day>=1 && day<=5;
+  return (weekday && mins>=LUNCH_START && mins<LUNCH_END) ? 'lunch' : 'dinner';
+}
+
+let lastMode = null;
+function applyMode(){
+  const mode = getMode();
+  if (mode === lastMode) return;
+  lastMode = mode;
+  const {day} = pacificNow();
+  const weekend = day===0 || day===6;
+  const b = document.getElementById('banner');
+  const lunchCard = document.getElementById('lunch-card');
+  const prices = document.getElementById('prices');
+
+  const showLunch = mode==='lunch';
+  lunchCard.classList.toggle('hidden', !showLunch);
+  prices.classList.toggle('two', !showLunch);
+
+  b.className = 'banner ' + mode;
+  if (mode==='lunch')       b.innerHTML = '☀️ <b>Lunch Special</b> available until 4pm · <small>Upgrade to Silver or Gold for premium cuts</small>';
+  else if (mode==='dinner') b.innerHTML = '🌙 <b>Dinner Menu</b> · <small>' + (weekend ? 'Weekend · Silver &amp; Gold all day' : 'Silver &amp; Gold') + '</small>';
+  else                      b.innerHTML = '🕐 <b>Currently closed</b> · <small>Opens daily at 11am</small>';
+}
+applyMode();
+setInterval(applyMode, 60000);
+
+/* active nav tab on scroll */
+const links = [...document.querySelectorAll('nav a')];
+const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+addEventListener('scroll', () => {
+  let i = 0;
+  secs.forEach((s,k) => { if (s.getBoundingClientRect().top < 80) i = k; });
+  links.forEach((a,k) => a.classList.toggle('active', k===i));
+}, {passive:true});
+</script>
+</body>
+</html>

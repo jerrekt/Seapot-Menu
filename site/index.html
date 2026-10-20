@@ -429,6 +429,7 @@ section{padding:0 12px;scroll-margin-top:42px}
         <div class="ck"><div>Gin &amp; Tonic<small>Gin, soda water, lemon</small></div><span class="p">$14</span></div>
         <div class="ck"><div>Long Island<small>Tequila, vodka, rum, triple sec, gin, lemon, cola</small></div><span class="p">$14</span></div>
         <div class="ck"><div>Moscow Mule<small>Vodka, ginger beer, lime</small></div><span class="p">$14</span></div>
+        <div class="ck"><div>Green Tea Cocktail<small>Jameson, peach schnapps, sour, Sprite</small></div><span class="p">$14</span></div>
       </div>
     </div>
   </div>
@@ -617,11 +618,13 @@ const PICKS = [
   // hot pot meat
   "Beef Brisket","Beef Toro","Rib Eye","Natural Angus Prime","Australian Wagyu",
   // k-bbq
-  "Pork Belly","Pork Jowl","Beef Bulgogi","Finger Rib","Beef Tongue","Angus Prime Steak","Galbi Short Rib"
+  "Pork Belly","Pork Jowl","Beef Bulgogi","Finger Rib","Beef Tongue","Angus Prime Steak","Galbi Short Rib",
+  // bar
+  "Green Tea Cocktail"
 ];
 if (location.pathname.startsWith('/branden') || new URLSearchParams(location.search).has('picks')) {
   const own = el => [...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim().replace(/^\d+\.\s*/,'');
-  document.querySelectorAll('.li, .meat').forEach(el=>{
+  document.querySelectorAll('.li, .meat, .ck > div').forEach(el=>{
     if (!PICKS.includes(own(el))) return;
         const b=document.createElement('span'); b.className='pk'; b.textContent="★ BRANDEN'S PICK"; b.title="Branden's pick";
     const sm=el.querySelector('small'), hot=el.querySelector('.hot');

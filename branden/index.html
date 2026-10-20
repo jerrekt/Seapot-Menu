@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seapot Korean BBQ & Hot Pot — Menu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #181818;
+    --border: #2a2a2a;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --red: #ff4d4d;
+    --white: #f0ede8;
+    --muted: #888;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    zoom: 0.5;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 0 60px 0;
+  }
+
+  /* NAV TABS */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  nav a:hover, nav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 28px 24px 18px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-logo {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 7vw, 48px);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: #ffffff; }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-tel {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gold);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 22px 20px 0;
+    scroll-margin-top: 52px;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(16px, 4vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .section-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  /* PRICING CARDS */
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .price-card.premium-card {
+    grid-column: 1 / -1;
+  }
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .price-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .label { color: var(--white); }
+  .price-row .price { color: var(--gold-light); font-weight: 600; }
+  .price-row .note { color: var(--muted); font-size: 11px; }
+  .plus-note {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  /* MENU ITEMS LIST */
+  .item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+  .item-grid.compact {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 10px;
+  }
+  .item-grid.compact .item {
+    font-size: 11.5px;
+    padding: 2px 0;
+  }
+  .item-grid.meat-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 12px;
+  }
+  .item-grid.meat-grid .item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 4px 0;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .item-grid.meat-grid .item-name {
+    font-weight: 600;
+  }
+  .item-grid.meat-grid .item-sub {
+    margin-top: 1px;
+    font-size: 10.5px;
+  }
+  .item-grid.meat-grid .item.pick {
+    padding-left: 6px;
+    margin-left: -6px;
+  }
+  .item-grid.meat-grid .pick-tag {
+    display: inline;
+    margin-left: 4px;
+  }
+  .item-grid.meat-grid .item-d {
+    display: inline;
+    margin-left: 4px;
+  }
+  .item-grid.liquor-grid.cols-3 .item-name {
+    display: block;
+    width: 100%;
+    word-break: break-word;
+  }
+  .item-grid.liquor-grid.cols-3 .item-name .item-price {
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+  .item-grid.liquor-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 8px;
+  }
+  .item-grid.liquor-grid.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .item-grid.liquor-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .item-grid.liquor-grid .item {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10.5px;
+    padding: 1px 0;
+    border-bottom: none;
+    line-height: 1.25;
+  }
+  .item-grid.liquor-grid .item-price {
+    font-size: 10.5px;
+  }
+  .item-grid.liquor-grid .item-sub {
+    font-size: 9px;
+    margin-top: 0;
+    line-height: 1.2;
+  }
+  .item-grid.liquor-grid.cols-3 .item {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+  .item-grid.liquor-grid.cols-3 .item-price {
+    font-size: 10px;
+  }
+  .item-grid.liquor-grid.cols-3 .item-sub {
+    font-size: 8.5px;
+    line-height: 1.2;
+  }
+  .cocktail-item .item-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .cocktail-item .item-name .item-price {
+    flex-shrink: 0;
+    margin-left: 6px;
+  }
+  .cocktail-item .item-sub {
+    flex-basis: 100%;
+  }
+  .item-grid.single { grid-template-columns: 1fr; }
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .item-name { flex: 1; }
+  .item-sub { color: var(--muted); font-size: 11px; display: block; margin-top: 2px; }
+  .item-price { color: var(--gold-light); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+  .item-d { color: var(--red); font-size: 10px; font-weight: 700; }
+
+  /* BRANDEN'S PICK */
+  .pick {
+    background: rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding-left: 6px;
+    margin-left: -6px;
+    border-bottom-color: rgba(201,168,76,0.35) !important;
+  }
+  .pick-tag {
+    color: var(--gold);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+
+
+  /* CATEGORY BLOCKS */
+  .cat-block {
+    margin-bottom: 10px;
+  }
+  .cat-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* SOUP GRID */
+  .soup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 12px;
+  }
+  .soup-item {
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .soup-num { color: var(--muted); }
+
+  .section-photo {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .photo-grid img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0.85;
+  }
+  .addon-item-photo {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    opacity: 0.9;
+  }
+
+
+  /* DRINKS */
+  .drink-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+  }
+  .drink-box h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .drink-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 10px;
+  }
+  .drink-list li {
+    font-size: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .drink-list li span { color: var(--gold-light); }
+
+  /* RULES */
+  .rule-item {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .rule-item strong { color: var(--gold-light); }
+  .rule-warn { color: var(--red); font-weight: 600; }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+  .badge.gold { background: var(--gold); color: var(--black); }
+
+  .age-banner {
+    background: #1a0a0a;
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #ff6b6b;
+    text-transform: uppercase;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    gap: 12px;
+  }
+  .info-row .key { color: var(--muted); flex-shrink: 0; }
+
+  @media (max-width: 480px) {
+    .item-grid.compact { grid-template-columns: repeat(3, 1fr); }
+    .item-grid.liquor-grid { grid-template-columns: repeat(3, 1fr); }
+    .item-grid.liquor-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .item-grid.liquor-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .drink-list { grid-template-columns: repeat(3, 1fr); }
+    .soup-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <a href="#pricing" class="active">Pricing</a>
+  <a href="#hotpot">Hot Pot</a>
+  <a href="#kbbq">K-BBQ</a>
+  <a href="#premium">Gold</a>
+  <a href="#addon">Add-On</a>
+  <a href="#drinks">Drinks</a>
+  <a href="#alcohol">21+ Bar</a>
+  <a href="#rules">Rules</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-logo">Korean BBQ & Hot Pot · All You Can Eat</div>
+  <h1>SEA<span>POT</span></h1>
+  <div class="hero-sub">Sunnyvale, California</div>
+  <div class="hero-tel">📞 408-685-2268</div>
+  <div class="hero-tel" style="margin-top:6px; font-size:12px; color:var(--muted);">📶 Guest WiFi Password: <span style="color:var(--gold-light);">4086852268</span></div>
+</div>
+
+<!-- ══════════ PRICING ══════════ -->
+<section id="pricing">
+  <div class="section-title">All You Can Eat Pricing</div>
+  <div class="price-grid">
+
+    <div class="price-card">
+      <h3>Lunch Special <span style="color:var(--muted); font-size:10px; font-family:'Inter',sans-serif; font-weight:400; letter-spacing:0;">11:00am – 3:00pm</span></h3>
+      <div style="font-size:9px; color:var(--muted); margin-bottom:8px;">Mon–Fri · Holiday Excluded</div>
+      <div class="price-row"><span class="label">Hot Pot or BBQ</span><span class="price">$25.99</span></div>
+      <div class="price-row"><span class="label">Both</span><span class="price">$30.99</span></div>
+      <div class="price-row"><span class="label">Under 3ft</span><span class="price">FREE</span></div>
+      <div class="price-row"><span class="label">Under 4.5ft</span><span class="price">$12.99</span></div>
+      <div class="price-row"><span class="label">Kids Both</span><span class="price">+$2.50</span></div>
+    </div>
+
+    <div class="price-card">
+      <h3>Silver <span style="color:var(--muted); font-size:10px; font-family:'Inter',sans-serif; font-weight:400; letter-spacing:0;">5:00pm – 11:00pm</span></h3>
+      <div style="font-size:9px; color:var(--muted); margin-bottom:8px;">Sat / Sun / Holidays — All Day</div>
+      <div class="price-row"><span class="label">Hot Pot or BBQ</span><span class="price">$35.99</span></div>
+      <div class="price-row"><span class="label">Both</span><span class="price">$40.99</span></div>
+      <div class="price-row"><span class="label">Under 3ft</span><span class="price">FREE</span></div>
+      <div class="price-row"><span class="label">Under 4.5ft</span><span class="price">$18.99</span></div>
+      <div class="price-row"><span class="label">Kids Both</span><span class="price">+$2.50</span></div>
+    </div>
+
+    <div class="price-card premium-card">
+      <h3>Gold <span style="color:var(--gold); font-size:10px; font-family:'Inter',sans-serif; font-weight:600; letter-spacing:0;">✦ Premium Wagyu Included</span></h3>
+      <div class="price-row"><span class="label">Hot Pot or BBQ</span><span class="price">$45.99</span></div>
+      <div class="price-row"><span class="label">Both</span><span class="price">$50.99</span></div>
+      <div class="price-row"><span class="label">Under 3ft</span><span class="price">FREE</span></div>
+      <div class="price-row"><span class="label">Under 4.5ft</span><span class="price">$23.99</span></div>
+      <div class="price-row"><span class="label">Kids Both</span><span class="price">+$2.50</span></div>
+    </div>
+
+  </div>
+  <div style="margin-top:16px; padding: 12px 16px; background: var(--card); border-radius:8px; border:1px solid var(--border); font-size:10px; color:var(--muted); line-height:1.6;">
+    ⏱ 90-minute AYCE limit per table · All guests at a table must order the same selection (Hot Pot, BBQ, or Both)<br>
+    🍽 Leftover food incurs 20% charge based on entire bill · No to-go for leftover food<br>
+    🧾 18% service fee added for parties of 6+<br>
+    🚫 No outside food or drink · All parties must choose the same price plan
+  </div>
+</section>
+
+<div style="margin: 18px 20px 0; padding-top: 14px; border-top: 2px solid var(--gold); text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-family: 'Cinzel', serif;">
+  ─ Begin Your Order ─
+</div>
+
+<!-- ══════════ HOT POT ══════════ -->
+<section id="hotpot">
+  <div class="section-title" style="font-size: calc(clamp(16px, 4vw, 22px) + 2px);">Hot Pot</div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <img src="https://www.maangchi.com/wp-content/uploads/2015/11/shabu-shabu.jpg" class="section-photo" alt="Hot Pot" onerror="this.style.display='none'">
+  <div class="section-subtitle">Step 1 — Choose Your Soup Base</div>
+  <div class="soup-grid">
+    <div class="soup-item pick">1. Spicy House 🌶️ <span class="pick-tag">⭐ Branden's Pick</span></div>
+    <div class="soup-item pick">2. Thai Pot 🌶️ <span class="pick-tag">⭐ Branden's Pick</span></div>
+    <div class="soup-item pick">3. Healthy Herb <span class="pick-tag">⭐ Branden's Pick</span></div>
+    <div class="soup-item">4. Mushroom</div>
+    <div class="soup-item">5. Miso</div>
+    <div class="soup-item">6. Spicy Miso 🌶️</div>
+    <div class="soup-item">7. Tomato</div>
+    <div class="soup-item">8. Creamy Milk</div>
+    <div class="soup-item">9. Curry 🌶️</div>
+    <div class="soup-item">10. Kimchi</div>
+    <div class="soup-item">11. Sukiyaki</div>
+    <div class="soup-item">12. Tonkatsu</div>
+    <div class="soup-item">13. Pepper Pork Stomach</div>
+    <div class="soup-item">14. Vegan Miso 🌱</div>
+    <div class="soup-item">15. Vegan Mushroom 🌱</div>
+    <div class="soup-item">16. Ginseng Chicken +$5</div>
+  </div>
+
+  <div class="photo-grid"><img src="https://i.imgur.com/wagyu1.jpg" alt="Wagyu" onerror="this.style.display='none'"><img src="https://i.imgur.com/pork1.jpg" alt="Pork" onerror="this.style.display='none'"><img src="https://i.imgur.com/beef1.jpg" alt="Beef" onerror="this.style.display='none'"></div>
+  <div class="section-subtitle">Step 2 — Hot Pot Meat</div>
+  <p style="font-size:10px; color:#fbd38d; margin-bottom:8px; font-style:italic;">1 meat selection per person per round</p>
+  <div class="item-grid meat-grid">
+    <div class="item"><span class="item-name">1. Chicken Breast<span class="item-sub">Mild & lean</span></span></div>
+    <div class="item"><span class="item-name">2. Natural Pork Belly<span class="item-sub">Rich & savory</span></span></div>
+    <div class="item"><span class="item-name">3. 100% Berkshire Pork<span class="item-sub">Silky texture</span></span></div>
+    <div class="item"><span class="item-name">4. Collar Butt<span class="item-sub">Juicy & rich</span></span></div>
+    <div class="item pick"><span class="item-name">5. Beef Brisket ⭐<span class="pick-tag">Branden's Pick</span><span class="item-sub">Savory & tender</span></span></div>
+    <div class="item"><span class="item-name">6. New Zealand Lamb<span class="item-sub">Mild, clean</span></span></div>
+    <div class="item pick"><span class="item-name">7. Beef Toro ⭐<span class="pick-tag">Branden's Pick</span><span class="item-sub">Melts in mouth</span></span></div>
+    <div class="item pick"><span class="item-name">8. Rib Eye ⭐<span class="pick-tag">Branden's Pick</span><span class="item-sub">Bold & beefy</span></span></div>
+    <div class="item pick"><span class="item-name">9. Natural Angus Prime ⭐<span class="item-d" style="color:#c0c0c0;">Silver+</span><span class="pick-tag">Branden's Pick</span><span class="item-sub">Rich & robust</span></span></div>
+    <div class="item pick"><span class="item-name">10. Australian Wagyu ⭐<span class="item-d" style="color:#c0c0c0;">Silver+</span><span class="pick-tag">Branden's Pick</span><span class="item-sub">Buttery, luxurious</span></span></div>
+  </div>
+</section>
+
+<!-- ══════════ K-BBQ ══════════ -->
+<section id="kbbq">
+  <div class="section-title" style="font-size: calc(clamp(16px, 4vw, 22px) + 2px);">Korean BBQ</div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <img src="https://seonkyounglongest.com/wp-content/uploads/2022/07/Korean-BBQ-Samgyeopsal.jpg" class="section-photo" alt="Korean BBQ" onerror="this.style.display='none'">
+  <p style="font-size:10px; color:#fbd38d; margin-top:8px; margin-bottom:4px; font-style:italic;">1 meat selection per person per round</p>
+  <div class="cat-block">
+    <div class="cat-title">Chicken</div>
+    <div class="item-grid compact">
+      <div class="item"><span class="item-name">Garlic Chicken</span></div>
+      <div class="item"><span class="item-name">Spicy Chicken 🌶️</span></div>
+      <div class="item"><span class="item-name">Chicken Bulgogi</span></div>
+      <div class="item"><span class="item-name">Chicken Gizzards 🌶️</span></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-title">Pork</div>
+    <div class="item-grid compact">
+      <div class="item pick"><span class="item-name">Pork Belly ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item"><span class="item-name">Garlic Pork Belly</span></div>
+      <div class="item"><span class="item-name">Spicy Pork Belly 🌶️</span></div>
+      <div class="item pick"><span class="item-name">Pork Jowl ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item"><span class="item-name">Pork Bulgogi</span></div>
+      <div class="item"><span class="item-name">Spicy Pork Bulgogi 🌶️</span></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-title">Beef</div>
+    <div class="item-grid">
+      <div class="item pick"><span class="item-name">Beef Bulgogi ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item"><span class="item-name">Spicy Beef Bulgogi 🌶️</span></div>
+      <div class="item"><span class="item-name">Garlic Pepper Tender Flap</span></div>
+      <div class="item"><span class="item-name">Brisket</span></div>
+      <div class="item"><span class="item-name">Black Pepper Beef</span></div>
+      <div class="item pick"><span class="item-name">Finger Rib ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item pick"><span class="item-name">Beef Toro ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item"><span class="item-name">Sukiyaki Wagyu Steak <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+      <div class="item"><span class="item-name">Ribeye Steak <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+      <div class="item pick"><span class="item-name">Beef Tongue <span class="item-d" style="color:#c0c0c0;">Silver+</span> ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item pick"><span class="item-name">Angus Prime Steak <span class="item-d" style="color:#c0c0c0;">Silver+</span> ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+      <div class="item"><span class="item-name">Garlic Pepper Lamb <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+      <div class="item pick"><span class="item-name">Galbi Marinated Short Rib <span class="item-d" style="color:#c0c0c0;">Silver+</span> ⭐<span class="pick-tag">Branden's Pick</span></span></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-title">Seafood</div>
+    <div class="item-grid compact">
+      <div class="item"><span class="item-name">Spicy Fish Fillet 🌶️</span></div>
+      <div class="item"><span class="item-name">Teriyaki Octopus</span></div>
+      <div class="item"><span class="item-name">Garlic Shrimp</span></div>
+      <div class="item"><span class="item-name">Spicy Shrimp 🌶️</span></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-title">Others</div>
+    <div class="item-grid compact">
+      <div class="item"><span class="item-name">Korean Rice Cake <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+      <div class="item"><span class="item-name">Vegetable Medley<span class="item-sub">Mushroom, Onion, Pumpkin</span></span></div>
+      <div class="item"><span class="item-name">Cheese Corn</span></div>
+      <div class="item"><span class="item-name">Butter</span></div>
+      <div class="item"><span class="item-name">Steam Rice</span></div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-title">Fried</div>
+    <div class="item-grid compact">
+      <div class="item"><span class="item-name">Sesame Balls</span></div>
+      <div class="item"><span class="item-name">Fried Eggrolls <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+      <div class="item"><span class="item-name">Chinese Doughnuts <span class="item-d" style="color:#c0c0c0;">Silver+</span></span></div>
+    </div>
+  </div>
+  </div>
+
+</section>
+
+<!-- ══════════ PREMIUM ══════════ -->
+<section id="premium">
+  <div class="section-title">Gold Menu</div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <div class="section-subtitle">Premium Wagyu — Gold Only</div>
+  <div class="item-grid" style="background: var(--card); border: 1px solid var(--gold); border-radius: 8px; padding: 14px 16px; gap: 0 20px;">
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">1. Australian Wagyu Toro</span></div>
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">2. Australian Wagyu Brisket</span></div>
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">3. Australian Wagyu Shoulder Cut</span></div>
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">4. American Wagyu Chuck Ribeye</span></div>
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">5. American Wagyu Dice</span></div>
+    <div class="item" style="border-bottom-color: var(--border);"><span class="item-name">6. USDA Angus Prime Short Rib</span></div>
+    <div class="item" style="border-bottom: none;"><span class="item-name">7. Jumbo Tiger Prawn</span></div>
+  </div>
+  </div>
+</section>
+
+<!-- ══════════ ADD-ON ══════════ -->
+<section id="addon">
+  <div class="section-title">Add-On Menu</div>
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+
+  <div class="item-grid">
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=300" class="addon-item-photo" alt="Jumbo Tiger Prawn" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Jumbo Tiger Prawn<span class="item-sub">5 pcs</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$15</span> <span class="item-price">$10</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1612024782955-49fae79e42bb?w=300" class="addon-item-photo" alt="Abalone" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Abalone<span class="item-sub">Slice tender · per ea</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$16.99</span> <span class="item-price">$13.99</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1552611052-33e04de081de?w=300" class="addon-item-photo" alt="Lobster Tail" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Lobster Tail<span class="item-sub">Fresh and tender · per ea</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$16.99</span> <span class="item-price">$15</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1621475388503-65e7e2f0e35e?w=300" class="addon-item-photo" alt="Jumbo Scallop" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Jumbo Scallop<span class="item-sub">2 pcs</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$12</span> <span class="item-price">$8</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=300" class="addon-item-photo" alt="A5 Wagyu Ribeye" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">A5 Wagyu Ribeye<span class="item-sub">5 oz</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$98</span> <span class="item-price">$48</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=300" class="addon-item-photo" alt="Lamb Chop" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Lamb Chop<span class="item-sub">2 pcs</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$12</span> <span class="item-price">$10</span></div>
+    <div class="item" style="flex-direction:column; align-items:stretch;"><img src="https://images.unsplash.com/photo-1511689660979-10d2b1eccbbc?w=300" class="addon-item-photo" alt="Duck Breast" onerror="this.style.display:'none'"><span class="item-name" style="font-size:11px;">Duck Breast<span class="item-sub">6 pcs</span></span><span class="item-price" style="text-decoration:line-through; color:var(--muted); font-size:10px;">$12</span> <span class="item-price">$8</span></div>
+  </div>
+
+  <div style="margin-top:14px; padding:12px; background:#1a1200; border:1px solid var(--gold); border-radius:6px; text-align:center;">
+    <div style="color:var(--gold); font-family:'Cinzel',serif; font-size:13px; font-weight:700; letter-spacing:0.1em;">VIP ROOM RESERVATION AVAILABLE</div>
+    <div style="color:var(--muted); font-size:11px; margin-top:4px;">2 Hours All You Can Eat + Karaoke</div>
+  </div>
+
+  </div>
+</section>
+
+<div style="margin: 18px 20px 0; padding-top: 14px; border-top: 2px solid var(--gold); text-align: center; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-family: 'Cinzel', serif;">
+  ─ Drinks &amp; Bar ─
+</div>
+
+<!-- ══════════ DRINKS ══════════ -->
+<section id="drinks">
+  <div class="section-title">Drink Menu</div>
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+
+  <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600" class="section-photo" alt="Drinks" onerror="this.style.display='none'">
+  <div class="drink-box">
+    <h4>Tea Drinks</h4>
+    <ul class="drink-list">
+      <li>Hot Green Tea <span>$1.50</span></li>
+      <li>Hot Rice Tea <span>$1.99</span></li>
+      <li>Chinese Herbal Tea <span>$3.50</span></li>
+      <li>Chrysanthemum Tea <span>$3.50</span></li>
+      <li>Honey Jasmine Tea <span>$3.50</span></li>
+      <li>Jasmine Tea Less Sweet <span>$3.50</span></li>
+      <li>Lemon Ice Tea <span>$3.50</span></li>
+      <li>Honey Pomelo <span>$3.50</span></li>
+      <li>Honey Green Tea <span>$3.50</span></li>
+      <li>Raspberry Ice Tea <span>$2.75</span></li>
+      <li>Shirley Temple <span>$3.99</span></li>
+    </ul>
+  </div>
+
+  <div class="drink-box">
+    <h4>Fresh Lemonade — $5.99 <span style="font-size:9px; color:var(--muted); font-weight:400;">Made Fresh Daily · Choose your flavor</span></h4>
+    <ul class="drink-list">
+      <li>Peach</li><li>Mango</li>
+      <li>Yogurt</li><li>Lychee</li>
+      <li>Passion Fruit</li><li>Kiwi</li>
+      <li>Watermelon</li><li>Guava</li>
+      <li>Strawberry</li>
+    </ul>
+  </div>
+
+  <div class="drink-box">
+    <h4>Fruit Juice</h4>
+    <ul class="drink-list">
+      <li>Fresh Coconut <span>$6.99</span></li>
+      <li>Orange Juice <span>$3.50</span></li>
+      <li>Apple Juice <span>$3.50</span></li>
+      <li>Cranberry Juice <span>$3.50</span></li>
+      <li>Sour Plum Juice <span>$3.50</span></li>
+      <li>Pineapple Juice <span>$3.50</span></li>
+      <li>Sweet Pear <span>$3.50</span></li>
+    </ul>
+  </div>
+
+  <div class="drink-box">
+    <h4>Fountain Drinks — $2.75 <span style="font-size:9px; color:var(--muted); font-weight:400;">Refill $1.00</span></h4>
+    <ul class="drink-list">
+      <li>Coke</li><li>Diet Coke</li>
+      <li>Sprite</li><li>Lemonade</li>
+      <li>Orange Soda</li><li>Ginger Ale</li>
+      <li>Pibb Xtra</li><li>Raspberry Ice Tea</li>
+      <li>Soda Water</li>
+    </ul>
+  </div>
+
+  </div>
+</section>
+
+<!-- ══════════ ALCOHOL ══════════ -->
+<section id="alcohol">
+  <div class="section-title">Bar Menu</div>
+  <div class="age-banner">🔞 21+ Only · Please Show Your ID to the Server</div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <div class="section-subtitle">Cocktails</div>
+  <div class="item-grid liquor-grid cols-2">
+    <div class="item cocktail-item"><span class="item-name">1. Mai Tai <span class="item-price">$13</span><span class="item-sub">White rum, dark rum, orange juice, pineapple juice, grenadine</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">2. Tequila Sunrise <span class="item-price">$14</span><span class="item-sub">Tequila, orange juice, grenadine</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">3. Cuba Libre <span class="item-price">$13</span><span class="item-sub">Rum, cola, lime</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">4. Old Fashioned <span class="item-price">$14</span><span class="item-sub">Bourbon, simple syrup, bitters</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">5. Gin & Tonic <span class="item-price">$14</span><span class="item-sub">Gin, soda water, lemon</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">6. Long Island <span class="item-price">$14</span><span class="item-sub">Tequila, vodka, rum, triple sec, gin, lemon juice, cola</span></span></div>
+    <div class="item cocktail-item"><span class="item-name">7. Moscow Mule <span class="item-price">$14</span><span class="item-sub">Vodka, ginger beer, lime juice</span></span></div>
+  </div>
+
+  <div class="section-subtitle">Sake</div>
+  <div class="item-grid liquor-grid cols-2">
+    <div class="item"><span class="item-name">1. Karatamba<span class="item-sub">Crisp and Dry</span></span><span class="item-price">$18/300ml · $40/720ml</span></div>
+    <div class="item"><span class="item-name">2. Kurosawa<span class="item-sub">Med-Dry, Smooth</span></span><span class="item-price">$20/300ml · $45/720ml</span></div>
+    <div class="item"><span class="item-name">3. Dassai 45<span class="item-sub">Junmai Daiginjo</span></span><span class="item-price">$25/300ml · $55/720ml</span></div>
+    <div class="item"><span class="item-name">4. Wakatake Ginjo<span class="item-sub">Junmai Ginjo, Smooth</span></span><span class="item-price">$65/720ml</span></div>
+    <div class="item"><span class="item-name">5. Kurosawa "Ginrei"<span class="item-sub">JDGJ Rich & Fruity</span></span><span class="item-price">$65/720ml</span></div>
+    <div class="item"><span class="item-name">6. Dassai Blue 35<span class="item-sub">Smooth, Clean</span></span><span class="item-price">$65/720ml</span></div>
+    <div class="item"><span class="item-name">7. Kirakucho<span class="item-sub">Junmai Ginjo (special edition)</span></span><span class="item-price">$19/300ml</span></div>
+    <div class="item"><span class="item-name">8. Hakutsuru<span class="item-sub">Junmai Ginjo, Smooth</span></span><span class="item-price">$22/300ml · $45/720ml</span></div>
+    <div class="item"><span class="item-name">9. Hana Awaka<span class="item-sub">Sparkling: Flower/Peach/Yuzu/Mix Berry</span></span><span class="item-price">$16/300ml</span></div>
+    <div class="item"><span class="item-name">10. Sayuri Nigori<span class="item-sub">Sweet & Smooth</span></span><span class="item-price">$18/300ml</span></div>
+    <div class="item"><span class="item-name">11. Kurosawa Nigori<span class="item-sub">Light and Fruity</span></span><span class="item-price">$18/300ml</span></div>
+  </div>
+
+  <div class="section-subtitle">Soju</div>
+  <div class="drink-box">
+    <h4>Soju — $13 / 12oz</h4>
+    <p style="font-size:13px; color:var(--white);">Original, Zero Sugar, Peach, Yogurt, Apple, Strawberry, Apple Mango, Green Grape</p>
+    <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">
+      <div style="color:var(--gold); font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;">Soju Cocktail</div>
+      <p style="font-size:11px; color:var(--muted); margin-bottom:6px;">Choose 1–2 flavors to combine</p>
+      <p style="font-size:13px;">Peach, Kiwi, Passion Fruit, Lychee, Mango, Watermelon, Yogurt, Strawberry, Guava</p>
+      <p style="font-size:13px; color:var(--gold-light); margin-top:4px;">$16 / 30oz · $52 / Tower</p>
+      <p class="pick" style="font-size:13px; margin-top:8px; padding:6px;">⭐ <strong>Jerrekt Mix</strong> — Lychee + Peach <span class="pick-tag">Branden's Pick</span></p>
+    </div>
+  </div>
+
+  <div class="section-subtitle">Draft &amp; Bottled Beer</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 8px;">
+    <div class="drink-box">
+      <h4>Draft Beer</h4>
+      <div class="price-row"><span class="label">Glass</span><span class="price">$7</span></div>
+      <div class="price-row"><span class="label">Pitcher</span><span class="price">$25</span></div>
+      <div class="price-row"><span class="label">Tower</span><span class="price">$39.99</span></div>
+      <p style="font-size:9px; color:var(--muted); margin-top:6px; line-height:1.3;">Sapporo, Asahi, 805, Modelo, Corona, Pacifico, Lagunitas IPA, Stella Artois</p>
+      <p style="font-size:9px; color:var(--muted); margin-top:4px; line-height:1.3;">Angry Orchard &amp; Sculpin IPA (Grapefruit): $8 / $27 / $42.99</p>
+    </div>
+    <div class="drink-box">
+      <h4>Bottled Beer</h4>
+      <div class="price-row"><span class="label">Small</span><span class="price">$5.99</span></div>
+      <div class="price-row"><span class="label">Large</span><span class="price">$8.99</span></div>
+      <p style="font-size:9px; color:var(--muted); margin-top:6px; line-height:1.3;">Sapporo, Asahi, Kloud, Heineken, Coors Light, Tsingtao, Corona, Kirin, Guinness, Budlight, Mango Cart, Blue Moon, Modelo</p>
+      <div style="margin-top:6px; padding-top:4px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:10px;">
+        <span>Sake/Yuzu Bomb</span><span style="color:var(--gold-light);">$6.99</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:10px; margin-top:4px; padding-top:4px; border-top:1px solid var(--border);">
+        <span>Lady Vodka</span><span style="color:var(--gold-light);">$19</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <div class="section-subtitle">Wine by Glass</div>
+  <div class="item-grid liquor-grid cols-2">
+    <div class="item"><span class="item-name">Champagne <span class="item-d">Glass</span></span><span class="item-price">$8</span></div>
+    <div class="item"><span class="item-name">Mimosa <span class="item-d">Glass</span></span><span class="item-price">$11</span></div>
+    <div class="item"><span class="item-name">White Wine<span class="item-sub">Chardonnay, Sauv Blanc, Moscato, White Zinfandel</span></span><span class="item-price">G $8 · B $28</span></div>
+    <div class="item"><span class="item-name">Red Wine<span class="item-sub">Merlot, Cabernet, Red Blend</span></span><span class="item-price">G $8 · B $28</span></div>
+  </div>
+
+  <div class="section-subtitle">Wine Bottled</div>
+  <div class="item-grid liquor-grid cols-2">
+    <div class="item"><span class="item-name">Franciscan<span class="item-sub">Cabernet/Chardonnay/Sauvignon Blanc</span></span><span class="item-price">$35/750ml</span></div>
+    <div class="item"><span class="item-name">J.Lohr<span class="item-sub">Chardonnay/Cabernet Sauvignon</span></span><span class="item-price">$49/750ml</span></div>
+    <div class="item"><span class="item-name">Groth<span class="item-sub">Sauvignon Blanc</span></span><span class="item-price">$65/750ml</span></div>
+    <div class="item"><span class="item-name">Louis M Martini<span class="item-sub">Cabernet Sauvignon</span></span><span class="item-price">$68/750ml</span></div>
+    <div class="item"><span class="item-name">Stag's Leap Karia<span class="item-sub">Chardonnay</span></span><span class="item-price">$65/750ml</span></div>
+    <div class="item"><span class="item-name">Silver Oak<span class="item-sub">Cabernet Sauvignon, Alexander Valley</span></span><span class="item-price">$129/750ml</span></div>
+  </div>
+  </div>
+
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:12px;">
+  <div class="section-subtitle">Hard Liquor</div>
+  <div class="item-grid liquor-grid cols-3">
+    <div class="item"><span class="item-name">Tito's Vodka <span class="item-price">$10</span></span></div>
+    <div class="item"><span class="item-name">Skyy Vodka <span class="item-price">$10</span></span></div>
+    <div class="item"><span class="item-name">Grey Goose Vodka <span class="item-price">$13</span></span></div>
+    <div class="item"><span class="item-name">Bacardi Rum <span class="item-price">$10</span><span class="item-sub">Superior White 80</span></span></div>
+    <div class="item"><span class="item-name">Jack Daniel's <span class="item-price">$10</span><span class="item-sub">Whiskey</span></span></div>
+    <div class="item"><span class="item-name">Maker's Mark <span class="item-price">$10</span><span class="item-sub">Bourbon</span></span></div>
+    <div class="item"><span class="item-name">Jim Beam <span class="item-price">$12</span><span class="item-sub">Bourbon</span></span></div>
+    <div class="item"><span class="item-name">Kilbrin Whiskey <span class="item-price">$12</span><span class="item-sub">Irish Whiskey</span></span></div>
+    <div class="item"><span class="item-name">Bourbon <span class="item-price">$12</span><span class="item-sub">Whiskey</span></span></div>
+    <div class="item"><span class="item-name">Jameson <span class="item-price">$14</span><span class="item-sub">Irish Whiskey 80</span></span></div>
+    <div class="item"><span class="item-name">Hennessy <span class="item-price">$14</span><span class="item-sub">Cognac VS 80</span></span></div>
+    <div class="item"><span class="item-name">Hennessy Privilege <span class="item-price">$17</span><span class="item-sub">COG Privilege 80 VSOP</span></span></div>
+    <div class="item"><span class="item-name">Toki Suntory <span class="item-price">$15</span><span class="item-sub">Japanese Whisky</span></span></div>
+    <div class="item"><span class="item-name">Tenjaku Pure Malt <span class="item-price">$17</span><span class="item-sub">Japanese Whisky</span></span></div>
+    <div class="item"><span class="item-name">Suntory World Whisky <span class="item-price">$17</span><span class="item-sub">Ao Blended Whisky</span></span></div>
+    <div class="item"><span class="item-name">Nikka Yoichi Single <span class="item-price">$19</span><span class="item-sub">Japanese Whisky</span></span></div>
+    <div class="item"><span class="item-name">Nikka Yoichi <span class="item-price">$19</span><span class="item-sub">Japanese Whisky</span></span></div>
+    <div class="item"><span class="item-name">The Miyagikyo 12 Year <span class="item-price">$25</span><span class="item-sub">Japanese Single Malt</span></span></div>
+    <div class="item"><span class="item-name">Yamazaki 12 Year <span class="item-price">$28</span><span class="item-sub">Japanese Single Malt</span></span></div>
+    <div class="item"><span class="item-name">Hibiki Suntory <span class="item-price">$19</span><span class="item-sub">Japanese Whisky</span></span></div>
+    <div class="item"><span class="item-name">Martell Cognac <span class="item-price">$16</span><span class="item-sub">VS 80</span></span></div>
+    <div class="item"><span class="item-name">Remy Martin 1738 <span class="item-price">$16</span><span class="item-sub">Brandy & Cognac</span></span></div>
+    <div class="item"><span class="item-name">Patron <span class="item-price">$15</span><span class="item-sub">Tequila Silver</span></span></div>
+    <div class="item"><span class="item-name">Casamigos Tequila <span class="item-price">$17</span><span class="item-sub">Reposado 80</span></span></div>
+    <div class="item"><span class="item-name">Casamigos Blanco <span class="item-price">$15</span><span class="item-sub">Reposado 80</span></span></div>
+    <div class="item"><span class="item-name">Don Julio Teq <span class="item-price">$15</span><span class="item-sub">Blanco 80</span></span></div>
+    <div class="item"><span class="item-name">Don Julio Reposado <span class="item-price">$17</span><span class="item-sub">Tequila</span></span></div>
+    <div class="item"><span class="item-name">Glenlivet <span class="item-price">$15</span><span class="item-sub">Scotch SM 12YR 80 YRC</span></span></div>
+    <div class="item"><span class="item-name">Black Label <span class="item-price">$15</span><span class="item-sub">Johnnie Walker Blended Scotch 12YR</span></span></div>
+    <div class="item"><span class="item-name">Clase Azul Reposado <span class="item-price">$25</span><span class="item-sub">Tequila</span></span></div>
+    <div class="item"><span class="item-name">Clase Azul Plata <span class="item-price">$25</span><span class="item-sub">Blanco Tequila</span></span></div>
+    <div class="item"><span class="item-name">Clase Azul Gold <span class="item-price">$30</span><span class="item-sub">Tequila</span></span></div>
+    <div class="item"><span class="item-name">Clase Azul Pink Edition <span class="item-price">$35</span><span class="item-sub">Reposado Tequila</span></span></div>
+    <div class="item"><span class="item-name">Clase Azul Black Edition <span class="item-price">$35</span><span class="item-sub">Reposado Tequila</span></span></div>
+    <div class="item"><span class="item-name">Don Julio 1942 <span class="item-price">$25</span><span class="item-sub">Tequila Anejo</span></span></div>
+    <div class="item"><span class="item-name">Blue Label <span class="item-price">$28</span><span class="item-sub">Johnnie Walker Blended Scotch</span></span></div>
+  </div>
+</section>
+
+<!-- ══════════ RULES ══════════ -->
+<section id="rules">
+  <div class="section-title">Usage & Rules</div>
+  <div class="rule-item"><strong>Take Only What You'll Finish</strong> — Please only grab the amount of food you intend to eat to help reduce food wastage.</div>
+  <div class="rule-item"><strong>Conveyor Belt Ordering</strong> — If you have specific requests not available on the belt, order from your server.</div>
+  <div class="rule-item"><strong>Hygiene</strong> — Inform a staff member if you accidentally drop or grab an unwanted item. <span class="rule-warn">DO NOT PUT ITEMS BACK ON THE CONVEYOR BELT.</span> Staff will dispose of it and clear empty plates.</div>
+  <div class="rule-item"><strong>Allergies</strong> — Inform our staff of any allergies or dietary restrictions. We can assist you in selecting appropriate items.</div>
+  <div class="rule-item"><strong>Report Issues</strong> — Report any issues with the conveyor belt or food items to a staff member.</div>
+  <div class="rule-item"><strong>90-Minute AYCE Limit</strong> — All guests at a table must order the same selection (Hot Pot, BBQ, or Both).</div>
+  <div class="rule-item"><strong>Leftovers</strong> — Leftover food incurs a 20% charge based on the entire bill. Leftover food is not available for to-go.</div>
+  <div class="rule-item">No outside drinks or food allowed.</div>
+  <div class="rule-item">Last call is 30 minutes before closing time.</div>
+
+  <div style="text-align:center; margin-top:40px; padding:24px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; letter-spacing:0.08em;">
+    Thank you for dining at Seapot. Enjoy your meal!<br>
+    <span style="color:var(--gold); margin-top:8px; display:block;">📞 408-685-2268</span>
+  </div>
+</section>
+
+<script>
+  // Highlight active nav tab on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

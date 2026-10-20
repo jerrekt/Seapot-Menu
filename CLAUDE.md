@@ -6,7 +6,7 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-bar` (staff bar guid
 ## Rules
 - **Only `git push` when BJ says "push".** Commit locally, show a preview/screenshot, then wait.
 - Keep chat replies short.
-- Prices/items here are the source of truth for the bar guide too — if a drink changes here, check `seapot-bar`.
+- The 21+ Bar section here and the staff guide (`seapot-bar`) must stay in sync — any new drink or price change goes in **both** repos.
 - Item descriptions (e.g. hot pot meats) were picked by BJ — don't rewrite copy unilaterally; offer options and let him choose.
 - **Never change URLs.** Printed QR codes and 3D-printed QR chips point to `menu.adsuaracloud.com`; the Branden QR points to `/branden`.
 
