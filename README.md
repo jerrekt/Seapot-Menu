@@ -19,6 +19,7 @@ QR menu for Seapot Korean BBQ & Hot Pot — https://menu.adsuaracloud.com
 No holiday handling yet — lunch card still shows on weekday holidays.
 
 ## Deploy (current)
+Hosted on SJ Proxmox CT 202 (`10.0.0.177`), nginx, public via Cloudflare Tunnel.
 ```
 scp index.html root@10.0.0.177:/var/www/html/index.html
 ```
