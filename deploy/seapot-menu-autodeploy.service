@@ -1,0 +1,6 @@
+[Unit]
+Description=Pull and deploy seapot-menu from GitHub
+
+[Service]
+Type=oneshot
+ExecStart=/opt/seapot-menu/deploy/autodeploy.sh
