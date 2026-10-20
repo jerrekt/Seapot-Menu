@@ -7,6 +7,8 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-bar` (staff bar guid
 - **Only `git push` when BJ says "push".** Commit locally, show a preview/screenshot, then wait.
 - Keep chat replies short.
 - Prices/items here are the source of truth for the bar guide too — if a drink changes here, check `seapot-bar`.
+- Item descriptions (e.g. hot pot meats) were picked by BJ — don't rewrite copy unilaterally; offer options and let him choose.
+- **Never change URLs.** Printed QR codes and 3D-printed QR chips point to `menu.adsuaracloud.com`; the Branden QR points to `/branden`.
 
 ## Layout
 - `site/index.html` — the whole menu (single file, inline CSS/JS).
@@ -20,6 +22,11 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-bar` (staff bar guid
 - Auto-deploy: `seapot-menu-autodeploy.timer` pulls `main` every minute, resets hard, reloads nginx if the conf changed. Logs: `journalctl -u seapot-menu-autodeploy`.
 - Public access: Cloudflare Tunnel `seapot-menu-sj` (locally managed — routes live in `/etc/cloudflared/config.yml` on CT 202, not the dashboard). Catch-all `http_status:404` must stay last.
 
+## History
+- Before this repo, deploys were manual `scp` to `root@10.0.0.177:/var/www/html/` (CT 202's IP). `setup.sh` backs that copy up to `/root/menu-backup-<date>`; don't deploy that way anymore.
+- The old separate `/branden/index.html` (old prices/layout) was replaced by the `PICKS` overlay.
+
 ## Gotchas
+- nginx sends `Cache-Control: no-cache, must-revalidate` so pushes show up right away (Cloudflare once served a stale menu). Still stale → Cloudflare → Caching → Purge Everything.
 - cloudflared hits nginx via `localhost` → **IPv6 `::1`**. Every server block needs `listen [::]:80;` or requests fall through to the default site (looks like "every hostname shows the menu").
 - `body{zoom:.5}` is intentional in the current design — don't "fix" it without asking.
