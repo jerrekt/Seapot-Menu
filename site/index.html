@@ -128,6 +128,9 @@ section{padding:0 12px;scroll-margin-top:42px}
 .foot{text-align:center;margin-top:14px;color:var(--muted);font-size:11px}
 
 .hidden{display:none!important}
+
+/* BRANDEN'S PICKS (/branden only) */
+.pk{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.04em;color:var(--gold-l);background:#2a2208;border:1px solid #5a4818;border-radius:3px;padding:0 4px;line-height:13px;margin-left:5px;white-space:nowrap;vertical-align:1px}
 </style>
 </head>
 <body>
@@ -605,6 +608,31 @@ function applyMode(){
 }
 applyMode();
 setInterval(applyMode, 60000);
+
+/* ── BRANDEN'S PICKS ──
+   Shown at /branden (or ?picks=1). Names must match the menu item text exactly. */
+const PICKS = [
+  // hot pot soup
+  "Spicy House","Thai Pot","Healthy Herb",
+  // hot pot meat
+  "Beef Brisket","Beef Toro","Rib Eye","Natural Angus Prime","Australian Wagyu",
+  // k-bbq
+  "Pork Belly","Pork Jowl","Beef Bulgogi","Finger Rib","Beef Tongue","Angus Prime Steak","Galbi Short Rib"
+];
+if (location.pathname.startsWith('/branden') || new URLSearchParams(location.search).has('picks')) {
+  const own = el => [...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim().replace(/^\d+\.\s*/,'');
+  document.querySelectorAll('.li, .meat').forEach(el=>{
+    if (!PICKS.includes(own(el))) return;
+        const b=document.createElement('span'); b.className='pk'; b.textContent="★ BRANDEN'S PICK"; b.title="Branden's pick";
+    const sm=el.querySelector('small'), hot=el.querySelector('.hot');
+    hot ? hot.after(b) : sm ? sm.before(b) : el.append(b);
+  });
+  // soju: Jerrekt Mix
+  const soju=[...document.querySelectorAll('#bar .box-t')].find(t=>t.textContent.startsWith('Soju Cocktail'));
+  if (soju) soju.nextElementSibling.insertAdjacentHTML('afterend','<div class="txt" style="margin-top:4px"><b>Jerrekt Mix</b> — Lychee + Peach<span class="pk">★ BRANDEN\'S PICK</span></div>');
+  document.querySelector('.legend').insertAdjacentHTML('beforeend','<span><i class="pk" style="margin:0;font-style:normal">★</i> Branden\'s pick</span>');
+  document.title = "Branden's Picks · Seapot";
+}
 
 /* active nav tab on scroll */
 const links = [...document.querySelectorAll('nav a')];
