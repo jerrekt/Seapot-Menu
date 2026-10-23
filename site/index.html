@@ -89,6 +89,17 @@ section{padding:0 12px;scroll-margin-top:42px}
 .li{display:flex;align-items:center;gap:5px;font-size:12px;padding:2px 0;border-bottom:1px solid #1c1c1c}
 .ic{width:21px;height:21px;flex:none;display:inline-block;vertical-align:-6px;margin-right:5px;fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
 .li .ic{margin:0}
+.alk{display:block;margin:-4px auto 10px;padding:0;background:none;border:0;color:var(--muted);font-family:inherit;font-weight:600;font-size:10px;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(201,168,76,.4);cursor:pointer}
+.alk:hover{color:var(--gold-l)}
+.al-m{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:16px}
+.al-m.on{display:flex}
+.al-box{background:var(--card);border:1px solid var(--gold);border-radius:10px;box-shadow:0 0 22px rgba(201,168,76,.3);width:min(340px,100%);max-height:88vh;overflow:auto;padding:14px 16px}
+.al-t{font-family:'Cinzel',serif;color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.06em;text-align:center}
+.al-h{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:11px 0 3px}
+.al-p{font-size:11px;color:#ddd;line-height:1.4}
+.al-p b{color:var(--muted);font-weight:600}
+.al-n{font-size:10px;color:var(--muted);margin-top:12px;line-height:1.4;text-align:center}
+.al-x{display:block;margin:10px auto 0;font:600 10px/1 inherit;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:999px;padding:6px 14px;cursor:pointer}
 .li .n{color:var(--muted);font-size:10px;min-width:15px;text-align:right}
 .li .p{margin-left:auto;color:var(--gold);font-weight:600;font-size:11px;white-space:nowrap}
 .li small{color:var(--muted);font-size:10px}
@@ -204,6 +215,7 @@ section{padding:0 12px;scroll-margin-top:42px}
 <!-- ═════════ HOT POT ═════════ -->
 <section id="hotpot">
   <div class="divider">Hot Pot</div>
+  <button class="alk" id="alk">Allergy &amp; dietary info ›</button>
 
   <div class="box">
     <div class="box-t">Step 1 · Soup Base</div>
@@ -567,6 +579,14 @@ section{padding:0 12px;scroll-margin-top:42px}
 </section>
 
 
+<div class="al-m" id="al-m"><div class="al-box" role="dialog" aria-modal="true"><div class="al-t">Allergy &amp; Dietary Info</div>
+<div class="al-h">General allergens</div><div class="al-p">Milk, wheat, soy, fish, tree nuts, peanuts, eggs, shellfish. <b>All soup bases contain MSG and soy.</b> Soy-free option: ask for hot water as the soup base.</div>
+<div class="al-h">Soup bases · dairy-free</div><div class="al-p">Thai Pot, Vegan Miso, Mushroom, Vegan Mushroom</div>
+<div class="al-h">Soup bases · shellfish-free</div><div class="al-p">Spicy House, Healthy Herb, Mushroom, Pepper Pork Stomach, Curry, Creamy Milk, Tomato, Vegan Mushroom, Ginseng Chicken</div>
+<div class="al-h">Soup bases · vegetarian / vegan</div><div class="al-p">Vegan Miso, Mushroom, Vegan Mushroom</div>
+<div class="al-h">Peanut warning</div><div class="al-p">Peanut sauce and ice cream contain peanuts.</div>
+<div class="al-n">Please tell a team member about any allergy or dietary need before ordering. For meats, sauces and side dishes, ask your server.</div>
+<button class="al-x" id="al-x">Close</button></div></div>
 <script>
 /* ── TIME-BASED MENU ──
    Always uses restaurant time (Pacific), not the phone's timezone.
@@ -689,6 +709,11 @@ document.querySelectorAll('#hotpot .meat').forEach(m=>{
   const mm=t.textContent.match(/^(\d+\.\s*)?(.*?)\s*$/); const k=MEAT_IC[mm[2]]; if(!k) return;
   const sp=document.createElement('span'); sp.innerHTML=(mm[1]||'')+icSvg(k)+mm[2]; t.replaceWith(...sp.childNodes);
 });
+
+const alm=document.getElementById('al-m');
+document.getElementById('alk').addEventListener('click',()=>alm.classList.add('on'));
+alm.addEventListener('click',e=>{if(e.target===alm||e.target.id==='al-x')alm.classList.remove('on')});
+addEventListener('keydown',e=>{if(e.key==='Escape')alm.classList.remove('on')});
 </script>
 </body>
 </html>
