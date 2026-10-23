@@ -130,17 +130,6 @@ section{padding:0 12px;scroll-margin-top:42px}
 .hidden{display:none!important}
 
 /* ALLERGY INFO — tap the small icon on a drink */
-.al{display:inline-flex;align-items:center;gap:3px;margin-top:2px;padding:0;background:none;border:0;color:var(--muted);font-family:inherit;font-weight:600;font-size:9px;line-height:1;letter-spacing:.02em;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(201,168,76,.4);text-transform:none;cursor:pointer}
-.al:hover,.al:focus-visible{color:var(--gold-l)}
-.al-m{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:16px}
-.al-m.on{display:flex}
-.al-box{background:var(--card);border:1px solid var(--gold);border-radius:10px;box-shadow:0 0 22px rgba(201,168,76,.3);width:min(300px,100%);padding:14px 16px;text-align:center}
-.al-t{font-family:'Cinzel',serif;color:var(--gold);font-size:15px;font-weight:700;letter-spacing:.06em}
-.al-h{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:10px 0 5px}
-.al-l{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
-.al-l span{font-size:12px;color:var(--amber);border:1px solid rgba(251,211,141,.4);background:rgba(251,211,141,.08);border-radius:4px;padding:2px 8px}
-.al-n{font-size:10px;color:var(--muted);margin-top:10px;line-height:1.4}
-.al-x{margin-top:10px;font:600 10px/1 inherit;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:999px;padding:6px 14px;cursor:pointer}
 
 /* BRANDEN'S PICKS (/branden only) */
 .pk{display:inline-block;font-size:8px;font-weight:800;letter-spacing:.04em;color:var(--gold-l);background:#2a2208;border:1px solid #5a4818;border-radius:3px;padding:0 4px;line-height:13px;margin-left:5px;white-space:nowrap;vertical-align:1px}
@@ -575,7 +564,6 @@ section{padding:0 12px;scroll-margin-top:42px}
   <div class="foot">Thank you for dining at Seapot!</div>
 </section>
 
-<div class="al-m" id="al-m"><div class="al-box" role="dialog" aria-modal="true"><div class="al-t" id="al-t"></div><div class="al-h">Contains</div><div class="al-l" id="al-l"></div><div class="al-n">Please tell your server about any allergy before you order. Recipes can change, and drinks are made in a shared bar.</div><button class="al-x" id="al-x">Close</button></div></div>
 
 <script>
 /* ── TIME-BASED MENU ──
@@ -652,36 +640,6 @@ if (location.pathname.startsWith('/branden') || new URLSearchParams(location.sea
   document.title = "Branden's Picks · Seapot";
 }
 
-/* ── ALLERGY INFO ──
-   Key = "<Section>|<Drink name>" (Section = Cocktails or Mocktails). Value = list of allergens.
-   A drink only gets the icon once it has an entry here, so nothing shows until it's been checked against the recipe book. */
-const ALLERGENS = {
-  // "Cocktails|Mai Tai": ["Citrus"],
-};
-function applyAllergens(){
-  document.querySelectorAll('#drinks .ck, #bar .ck').forEach(row=>{
-    const box=row.closest('.box'); if(!box) return;
-    const sec=[...box.querySelector('.box-t').childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();
-    const d=row.firstElementChild; if(!d) return;
-    const name=[...d.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();
-    const key=sec+'|'+name, list=ALLERGENS[key];
-    d.querySelectorAll('.al').forEach(x=>x.remove());
-    if(!list||!list.length) return;
-    const b=document.createElement('button'); b.className='al'; b.type='button'; b.dataset.k=key; b.dataset.n=name;
-    b.textContent='Allergy info ›'; b.setAttribute('aria-label','Allergy info for '+name);
-    d.append(b);
-  });
-}
-const alm=document.getElementById('al-m');
-document.addEventListener('click',e=>{
-  const b=e.target.closest('button.al'); if(!b) return;
-  document.getElementById('al-t').textContent=b.dataset.n;
-  document.getElementById('al-l').innerHTML=ALLERGENS[b.dataset.k].map(a=>`<span>${a}</span>`).join('');
-  alm.classList.add('on');
-});
-alm.addEventListener('click',e=>{if(e.target===alm||e.target.id==='al-x')alm.classList.remove('on')});
-addEventListener('keydown',e=>{if(e.key==='Escape')alm.classList.remove('on')});
-applyAllergens();
 
 /* active nav tab on scroll */
 const links = [...document.querySelectorAll('nav a')];
