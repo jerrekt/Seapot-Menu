@@ -130,8 +130,7 @@ section{padding:0 12px;scroll-margin-top:42px}
 .hidden{display:none!important}
 
 /* ALLERGY INFO — tap the small icon on a drink */
-.al{display:inline-flex;align-items:center;gap:3px;margin-top:2px;padding:0;background:none;border:0;color:var(--muted);font-family:inherit;font-weight:600;font-size:9px;line-height:1;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
-.al svg{width:11px;height:11px;fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.al{display:inline-flex;align-items:center;gap:3px;margin-top:2px;padding:0;background:none;border:0;color:var(--muted);font-family:inherit;font-weight:600;font-size:9px;line-height:1;letter-spacing:.02em;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(201,168,76,.4);text-transform:none;cursor:pointer}
 .al:hover,.al:focus-visible{color:var(--gold-l)}
 .al-m{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:16px}
 .al-m.on{display:flex}
@@ -659,7 +658,6 @@ if (location.pathname.startsWith('/branden') || new URLSearchParams(location.sea
 const ALLERGENS = {
   // "Cocktails|Mai Tai": ["Citrus"],
 };
-const AL_ICON='<svg viewBox="0 0 24 24"><path d="M12 3 L22 20 H2 Z"/><path d="M12 10 V14.5"/><circle cx="12" cy="17.2" r=".6"/></svg>';
 function applyAllergens(){
   document.querySelectorAll('#drinks .ck, #bar .ck').forEach(row=>{
     const box=row.closest('.box'); if(!box) return;
@@ -670,7 +668,7 @@ function applyAllergens(){
     d.querySelectorAll('.al').forEach(x=>x.remove());
     if(!list||!list.length) return;
     const b=document.createElement('button'); b.className='al'; b.type='button'; b.dataset.k=key; b.dataset.n=name;
-    b.innerHTML=AL_ICON+'Allergens'; b.setAttribute('aria-label','Allergy info for '+name);
+    b.textContent='Allergy info ›'; b.setAttribute('aria-label','Allergy info for '+name);
     d.append(b);
   });
 }
