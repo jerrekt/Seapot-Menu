@@ -16,6 +16,8 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-bar` (staff bar guid
   - `/branden` = same page with Branden's picks tagged. Picks list is the `PICKS` array in the script (names must match item text exactly; Jerrekt Mix soju is added in code). Test locally with `?picks=1`.
 - `deploy/` — nginx site, systemd autodeploy service+timer, `setup.sh` (one-time).
 
+  - Allergens: `ALLERGENS` map in the script, key `"Section|Name"` (e.g. `"Cocktails|Mai Tai"`) → array of allergens. A drink only gets the small ⚠ Allergens icon (opens pop-up) if it has a non-empty entry. **Only fill from verified recipes (recipe book); never guess.** Currently empty.
+
 ## Hosting
 - Proxmox node Adsuara → LXC **CT 202 `menu-server`** (unprivileged, 1 core, 512 MB, onboot, backed up).
 - nginx serves all three sites from `/opt/<repo>/site`; this repo's server block is `menu.adsuaracloud.com` (also handles `/branden/`).
